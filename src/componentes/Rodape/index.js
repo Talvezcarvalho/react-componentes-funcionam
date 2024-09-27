@@ -33,4 +33,4 @@ const Rodape = () => {
     </footer>)
 }
 
-export default Rodape
+export default Rodape;
