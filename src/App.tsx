@@ -4,6 +4,7 @@ import Formulario from "./componentes/Formulario";
 import Rodape from "./componentes/Rodape";
 import Time from "./componentes/Time";
 import { v4 as uuidv4 } from 'uuid';
+import { IColaborador } from "./interfaces/Colaborador";
 
 function App() {
 
@@ -45,7 +46,7 @@ function App() {
     },
   ])
 
-  const inicial = [
+  const inicial :IColaborador[] = [
     {
       id: uuidv4(),
       favorito: false,
@@ -240,13 +241,13 @@ function App() {
     },
   ]
 
-  const [colaboradores, setColaboradores] = useState(inicial)
+  const [colaboradores, setColaboradores] = useState<IColaborador[]>(inicial);
 
-  function deletarColaborador(id) {
+  function deletarColaborador(id: string) {
     setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
   }
 
-  function mudarCorTime(cor, id) {
+  function mudarCorTime(cor: string, id: string) {
     setTimes(times.map( time => {
       if(time.id === id){
         time.cor = cor;
@@ -256,21 +257,21 @@ function App() {
       ))
   }
   
-  function cadastrarTimes(novoTime) {
+  function cadastrarTimes(novoTime : {nome: string, cor: string}) {
     setTimes([ ...times, { ...novoTime, id: uuidv4()}])
   }
 
-  function resolverFavorito(id) {
-    setColaboradores(colaboradores.map (colaborador => {
+  function resolverFavorito(id: string) {
+    setColaboradores(colaboradores.map ((colaborador) => {
       if(colaborador.id === id) colaborador.favorito = !colaborador.favorito;
       return colaborador;
-    }))
+    }));
   }
 
   return (
     <div> 
-      <Banner />
-      <Formulario  
+      <Banner enderecoImagem="/imagens/banner.png"/>
+      <Formulario
       cadastrarTimes={cadastrarTimes}
       times={times.map(time => time.nome)} 
       aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])}
@@ -285,7 +286,7 @@ function App() {
           time={time} 
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
           aoDeletar={deletarColaborador}
-         />)}
+         />)}z
       </section>
       <Rodape />
     </div>
