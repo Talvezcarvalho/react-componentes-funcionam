@@ -5,7 +5,7 @@ interface CampoProps {
   placeholder: string;
   label: string;
   valor: string;
-  type?: string;
+  type?: 'text' | 'password' | 'date' | 'email' | 'color';
   obrigatorio?: boolean;
 }
 

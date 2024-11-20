@@ -20,6 +20,7 @@ const Formulario = ({aoCadastrar, times, cadastrarTimes} :FormularioProps) => {
     const [time, setTime] = useState('')
     const [nomeTime, setnomeTime] = useState('')
     const [corTime, setcorTime] = useState('')
+    const [data, setData] = useState('')
 
 
     const aoSubmeter = (evento: React.FormEvent<HTMLFormElement>) => {
@@ -60,6 +61,14 @@ const Formulario = ({aoCadastrar, times, cadastrarTimes} :FormularioProps) => {
                     placeholder='Informe o endereço da imagem '
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)}/>
+                <Campo
+                    type='date'
+                    obrigatorio={true}
+                    label='Data de entrada no time'
+                    placeholder=''
+                    valor={data}
+                    aoAlterado={valor => setData(valor)}/>
+
                 <ListaSuspensa 
                     obrigatorio={true}
                     label='Times'

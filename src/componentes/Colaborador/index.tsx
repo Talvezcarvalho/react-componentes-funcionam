@@ -20,6 +20,8 @@ const Colaborador = ({ colaborador, corDeFundo, aoDeletar, aoFavoritar }:Colabor
     onClick: favoritar,
   };
 
+  const temData = colaborador.data ? new Date(colaborador.data).toLocaleDateString() : "";
+
   return (
     <div className="colaborador">
       <IoIosCloseCircle
@@ -35,6 +37,7 @@ const Colaborador = ({ colaborador, corDeFundo, aoDeletar, aoFavoritar }:Colabor
       <div className="rodape">
         <h4>{colaborador.nome}</h4>
         <h5>{colaborador.cargo}</h5>
+        <h5>{colaborador.data? new Date(colaborador.data).toLocaleDateString() : null}</h5>
         <div className="favoritar">
           {colaborador.favorito ? (
             <MdFavorite {...propsFavorito} color="#ff0000" />
